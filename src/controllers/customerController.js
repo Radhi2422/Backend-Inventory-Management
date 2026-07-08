@@ -4,6 +4,7 @@ require("../models/customerSchema.js");
 exports.createCustomer =
 async(req,res)=>{
 
+console.log("reached create Customer");
     const CustomerData =
         await customerinfo.create(req.body);
         // console.log(req.body);
@@ -14,23 +15,21 @@ exports.getCustomer =
 async(req,res)=>{
 
     try{
-        const {name}=req.query;
-        let CustomerData;
-        if(name){
-            CustomerData=await customerinfo.find({
-                name:{$regex:name,$options:"i"}
-            })
-        }
-        else{
-            CustomerData=await customerinfo.find();
-        }
-        res.status(500).json({
+        const customerData=await customerinfo.find({});
+       // console.log(customerData);
+        
+        return res.status(200).json({
             success:true,
-            count:CustomerData.length,
-            CustomerData
-        });
-    }catch(error){
-        console.log(error);
+            count:customerData.length,
+            customerData,
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"Error fetching customers",
+            error:error.message,
+        })
     }
 };
 

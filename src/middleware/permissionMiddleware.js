@@ -15,20 +15,14 @@ module.exports=(permission)=>{
             }
         });
 
-        // console.log(user);
-        
-        //console.log(user.role);
-        console.log("Permission Data only")
-        console.log(user.role);
-                console.log(user);
-
-        const permissions = user.role.permission.name
-        
-       
-        
-        if(!permissions.includes(permission)){
-
-        // console.log("Reached here also");
+        const permissions = user.role.permission
+        let flag=0;
+        for (const element of permissions){            
+            if(element.name==permission) {flag=1; break;}
+        }
+        if(flag==0){
+            // console.log("Flag is zero");
+            
             return res.status(403).json({
 
                 success:false,

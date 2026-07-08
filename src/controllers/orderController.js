@@ -6,22 +6,20 @@ exports.getOrders =
 async(req,res)=>{
 
     try{
-        const {name}=req.query;
-        let OrderData;
-        if(name){
-            OrderData=await orderinfo.find({
-                name:{$regex:name,$options:"i"}
-            })
-        }
-        else{
-            OrderData=await orderinfo.find();
-        }
-        res.status(500).json({
-            success:true,
-            count:OrderData.length,
-            OrderData
-        });
-    }catch(error){
-        console.log(error);
-    }
+        const orderData=await orderinfo.find({});
+               // console.log(customerData);
+                
+                return res.status(200).json({
+                    success:true,
+                    count:orderData.length,
+                    orderData,
+                })
+            }
+            catch(error){
+                return res.status(500).json({
+                    success:false,
+                    message:"Error fetching customers",
+                    error:error.message,
+                })
+            }
 };

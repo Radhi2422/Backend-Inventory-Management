@@ -20,8 +20,11 @@ const customerSchema = new mongoose.Schema({
   ContactNumber: {
     type: Number,
     required: true
-  }
-});
+  }},
+  {
+    collection: "Customer"
+}
+);
 
 module.exports =
   mongoose.model("Customer", customerSchema);

@@ -11,9 +11,9 @@ const {
     deleteCustomer
 }= require("../controllers/customerController.js")
 
-router.get("/view",authMiddleware,permissionMiddleware("VIEW_CUSTOMERS"),getCustomer);//to be tested
+console.log("reached here");
+router.get("/view",authMiddleware,permissionMiddleware("VIEW_CUSTOMER"),getCustomer);//to be tested
 router.get("/:name",authMiddleware,permissionMiddleware("VIEW_CUSTOMER_BYID"), getCustomerById);//to be tested
-
 
 router.post("/add-customer",authMiddleware,permissionMiddleware("ADD_CUSTOMER"),createCustomer);//working fine
 // router.put("/update/:name",authMiddleware,permissionMiddleware("UPDATE_CUSTOMER"),updateProduct);
