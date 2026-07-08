@@ -14,7 +14,7 @@ const {
 
 = require("../controllers/productController.js");
 // router.get("/view",getProduct);//working 
-router.get("/view",authMiddleware,permissionMiddleware("VIEW_PRODUCTS"),getProduct);//to be tested
+router.get("/view",authMiddleware,permissionMiddleware("VIEW_PRODUCT"),getProduct);//to be tested
 // router.get("/:name", getProductById);
 router.get("/:name",authMiddleware,permissionMiddleware("VIEW_PRODUCT_BYID"), getProductById);//to be tested
 router.post("/add-product",authMiddleware,permissionMiddleware("ADD_PRODUCT"),createProduct);//working fine

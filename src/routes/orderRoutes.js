@@ -1,4 +1,6 @@
 const express = require("express");
+const authMiddleware=require("../middleware/authMiddleware.js");
+const permissionMiddleware=require("../middleware/permissionMiddleware.js");
 
 const router = express.Router();
 
@@ -26,6 +28,6 @@ const {
  *       500:
  *         description: Internal server error
  */
-router.get("/get", getOrders);
+router.get("/view", authMiddleware,permissionMiddleware("VIEW_ORDER"),getOrders);
 
 module.exports = router;
