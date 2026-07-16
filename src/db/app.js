@@ -13,6 +13,8 @@ const authRoutes =require("../routes/authRoutes");
 const productRoutes = require("../routes/productroutes");
 const customerRoutes = require("../routes/customerroutes");
 const orderRoutes = require("../routes/orderRoutes");
+const problemRoutes=require("../routes/problemRoutes.js")
+
 
 const requestLogger = require("../logs/requestLogger.js");
 
@@ -39,6 +41,7 @@ app.use("/api/auth", authRoutes);
 app.use("/products", productRoutes);
 app.use("/customers", customerRoutes);
 app.use("/orders",orderRoutes);
+app.use("/problems",problemRoutes)
 app.use(
   "/api-docs",
   swaggerUi.serve,

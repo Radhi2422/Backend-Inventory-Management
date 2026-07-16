@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
   },
 {
     timestamps:true,
-    collection: "User"
+    collection: "ProductUser"
 }
 );
 // const User = mongoose.model("User", userSchema);

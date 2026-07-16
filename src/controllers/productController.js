@@ -17,6 +17,7 @@ exports.getProduct = async (req, res) => {
       count: products.length,
       products,
     });
+    console.log(products)
   } catch (error) {
     console.error(error);
 
