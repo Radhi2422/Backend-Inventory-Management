@@ -7,7 +7,6 @@ async(req,res)=>{
 
     try{
         const orderData=await orderinfo.find({});
-               // console.log(customerData);
                 
                 return res.status(200).json({
                     success:true,

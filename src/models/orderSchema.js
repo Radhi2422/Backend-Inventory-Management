@@ -43,6 +43,7 @@ const orderSchema = new mongoose.Schema(
     }
   },
   {
+    collection:"Order",
     timestamps: true
   }
 );
