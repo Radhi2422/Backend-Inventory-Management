@@ -3,9 +3,17 @@ require("../models/productSchema.js");
 
 exports.createProduct =
 async(req,res)=>{
+    const variants = JSON.parse(req.body.variants);
+    const specifications = JSON.parse(req.body.specifications);
 
-    const Product =
-        await product.create(req.body);
+    const productData = {
+          ...req.body,
+          specifications: JSON.parse(req.body.specifications || "[]"),
+          variants: JSON.parse(req.body.variants || "[]")
+    };
+    // console.log(productData);
+    const Product = product.create(productData);
+    await product.save();
     res.status(201).json(Product);
 };
 
